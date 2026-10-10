@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  {% include head.html %}
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-name" href="{{ '/' | relative_url }}">Ray Lu</a>
+        {% include navigation.html %}
+      </header>
+
+      <main id="main-content" class="main-content">
+        {% unless page.url == '/' %}
+          <header class="page-heading">
+            <h1>{{ page.title | escape }}</h1>
+          </header>
+        {% endunless %}
+        {{ content }}
+      </main>
+
+      <footer class="site-footer">
+        <p>© {{ site.time | date: "%Y" }} Ray Lu</p>
+        <a href="https://www.linkedin.com/in/siqilu647/" rel="me">LinkedIn</a>
+      </footer>
+    </div>
+  </body>
+</html>
