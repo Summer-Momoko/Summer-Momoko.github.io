@@ -6,7 +6,9 @@
     <div class="site-shell">
       <header class="site-header">
         <a class="site-name" href="{{ '/' | relative_url }}">Ray Lu</a>
-        {% include navigation.html %}
+        <div class="header-actions">
+          {% include navigation.html %}
+        </div>
       </header>
 
       <main id="main-content" class="main-content">
@@ -23,5 +25,31 @@
         <a href="https://www.linkedin.com/in/siqilu647/" rel="me">LinkedIn</a>
       </footer>
     </div>
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const button = document.querySelector("[data-theme-toggle]");
+        const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
+        const activeTheme = () =>
+          root.dataset.theme || (systemPreference.matches ? "dark" : "light");
+        const syncButton = () => {
+          button.setAttribute("aria-pressed", String(activeTheme() === "dark"));
+        };
+
+        button.addEventListener("click", () => {
+          const nextTheme = activeTheme() === "dark" ? "light" : "dark";
+          root.dataset.theme = nextTheme;
+          try {
+            localStorage.setItem("ray-lu-theme", nextTheme);
+          } catch {}
+          syncButton();
+        });
+
+        systemPreference.addEventListener("change", () => {
+          if (!root.dataset.theme) syncButton();
+        });
+        syncButton();
+      })();
+    </script>
   </body>
 </html>
