@@ -25,5 +25,5 @@ permalink: /
 
 <section class="home-section" aria-labelledby="about-heading">
   <h2 id="about-heading">About</h2>
-  <p>A professional summary has not been provided yet. <a href="{{ '/about/' | relative_url }}">Read the About page</a>.</p>
+  <p><a href="{{ '/about/' | relative_url }}">Read the About page</a>.</p>
 </section>
